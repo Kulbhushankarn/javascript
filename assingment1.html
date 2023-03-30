@@ -1,0 +1,50 @@
+<script>
+// Javascript implementation of the approach
+	
+	// Function to expand and print the given string
+	function expandString(strin)
+	{
+		let temp = "";
+		let j;
+
+		for (let i = 0; i < strin.length; i++) {
+			if (strin[i].charCodeAt(0) >= 0) {
+
+				// Subtract '0' to convert char to int
+				let num = strin[i].charCodeAt(0) - '0'.charCodeAt(0);
+				if (strin[i+1] == '(') {
+
+					// Characters within brackets
+					for (j = i + 1; strin[j] != ')'; j++) {
+						if ((strin[j] >= 'a'
+							&& strin[j] <= 'z')
+							|| (strin[j] >= 'A'
+								&& strin[j] <= 'Z')) {
+							temp += strin[j];
+						}
+					}
+
+					// Expanding
+					for (let k = 1; k <= num; k++) {
+						document.write(temp);
+					}
+
+					// Reset the variables
+					num = 0;
+					temp = "";
+
+					if (j < strin.length) {
+						i = j;
+					}
+				}
+			}
+		}
+	}
+	
+	// Driver code
+	let strin = "3M2u5b2a1s1h2i1r";
+	expandString(strin);
+
+
+// This code is contributed by rag2127
+</script>
